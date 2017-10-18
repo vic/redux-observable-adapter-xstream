@@ -1,13 +1,13 @@
 {
-  "name": "redux-observable-adapter-most",
+  "name": "redux-observable-adapter-xstream",
   "version": "0.0.2",
-  "description": "Use most.js streams with redux-observable",
+  "description": "Use xstream with redux-observable",
   "main": "lib/index.js",
   "scripts": {
     "build": "npm run build:cjs && npm run build:umd && npm run build:umd:min",
     "build:cjs": "babel src -d lib",
-    "build:umd": "cross-env NODE_ENV=development webpack src/index.js dist/redux-observable-adapter-most.js",
-    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/redux-observable-adapter-most.min.js",
+    "build:umd": "cross-env NODE_ENV=development webpack src/index.js dist/redux-observable-adapter-xstream.js",
+    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/redux-observable-adapter-xstream.min.js",
     "build:tests": "rm -rf temp && babel test -d temp",
     "clean": "rimraf temp lib dist",
     "test": "npm run build && npm run build:tests && mocha temp"
@@ -20,26 +20,25 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/redux-observable/redux-observable-adapter-most.git"
+    "url": "https://github.com/redux-observable/redux-observable-adapter-xstream.git"
   },
   "keywords": [
     "RxJS",
-    "most",
-    "most.js",
+    "xstream",
     "compatibility",
     "interop",
     "convert",
     "support"
   ],
-  "author": "Jay Phelps <hello@jayphelps.com>",
+  "author": "Victor Borja <vborja@apache.org>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/redux-observable/redux-observable-adapter-most/issues"
+    "url": "https://github.com/vic/redux-observable-adapter-xstream/issues"
   },
-  "homepage": "https://github.com/redux-observable/redux-observable-adapter-most",
+  "homepage": "https://github.com/vic/redux-observable-adapter-xstream",
   "peerDependencies": {
-    "most": "^1.0.3",
-    "rxjs": "^5.0.0-beta.6"
+    "rxjs": "^5.0.0-beta.6",
+    "xstream": "^11.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",
@@ -54,9 +53,9 @@
     "cross-env": "^1.0.8",
     "mocha": "^2.4.5",
     "rimraf": "^2.5.2",
-    "most": "^1.0.3",
     "rxjs": "^5.0.0-beta.6",
     "sinon": "1.17.4",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "xstream": "^11.0.0"
   }
 }

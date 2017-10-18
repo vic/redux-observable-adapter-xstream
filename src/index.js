@@ -1,17 +1,8 @@
-import { Stream, filter } from 'most';
-import { ObservableSource } from 'most/lib/observable/fromObservable'; 
+import xs from 'xstream';
 import { from } from 'rxjs/observable/from';
 
-export class ActionsStream extends Stream {
-  ofType(...keys) {
-    return ofType(...keys, this);
-  }
-}
-
 export const ofType = (...keys) => {
-  const source = keys.pop();
-
-  return filter(action => {
+  return action => {
     const type = action.type;
     const len = keys.length;
 
@@ -25,10 +16,10 @@ export const ofType = (...keys) => {
       }
     }
     return false;
-  }, source);
+  };
 };
 
 export default {
-  input: input$ => new ActionsStream(new ObservableSource(input$)),
+  input: input$ => xs.fromObservable(input$),
   output: output$ => from(output$)
 };

@@ -9,15 +9,15 @@ const config = {
     ]
   },
   output: {
-    library: 'ReduxObservableAdapterMost',
+    library: 'ReduxObservableAdapterXstream',
     libraryTarget: 'umd'
   },
   externals: {
-    'most': {
-      root: 'most',
-      commonjs2: 'most',
-      commonjs: 'most',
-      amd: 'most'
+    'xstream': {
+      root: 'xstream',
+      commonjs2: 'xstream',
+      commonjs: 'xstream',
+      amd: 'xstream'
     }
   },
   plugins: [

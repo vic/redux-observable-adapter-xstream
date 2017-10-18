@@ -1,44 +1,32 @@
-# redux-observable-adapter-most
+# redux-observable-adapter-xstream
 
-Use [most.js](https://github.com/cujojs/most) with [redux-observable](https://github.com/redux-observable/redux-observable)
+Use [xstream](https://github.com/saltz/xstream) with [redux-observable](https://github.com/redux-observable/redux-observable)
 
 
 ## Install
 
-This requires peer dependencies of `rxjs@5` and `most@1`, which will have to be installed as well.
+This requires peer dependencies of `rxjs@5` and `xstream`, which will have to be installed as well.
 
 ```sh
-npm install --save redux-observable-adapter-most
+npm install --save redux-observable-adapter-xstream
 ```
 
 ## Usage
 
-This library basically will convert the RxJS `ActionsObservable` provided to your Epics into a most.js version. Then the most.js Stream you return in your Epic will be converted back to an RxJS Observable inside the middleware.
+This library basically will convert the RxJS `ActionsObservable` provided to your Epics into a xstream version. Then the xstream you return in your Epic will be converted back to an RxJS Observable inside the middleware.
 
 ```js
-import mostAdapter from 'redux-observable-adapter-most';
+import xstreamAdapter, {ofType} from 'redux-observable-adapter-xstream';
 
-const epicMiddleware = createEpicMiddleware(rootEpic, { adapter: mostAdapter });
+const epicMiddleware = createEpicMiddleware(rootEpic, { adapter: xstreamAdapter });
 
-// your Epics are now most.js streams
+// your Epics are now xstreams
 
 const pingPongEpic = action$ =>
-  action$.ofType(PING)
+  action$
+    .filter(ofType(PING))
     .map(action => ({
       type: PONG
     }));
 ```
 
-The most.js Stream is an ActionsStream which has the equivalent `ofType` helper. If you prefer the functional composition way, you can use it too:
-
-```js
-import { ofType } from 'redux-observable-adapter-most';
-
-const pingPongEpic = action$ => {
-  const ping$ = ofType(PING, action$);
-
-  return map(action => ({
-    type: PONG
-  }), ping$);
-};
-```
