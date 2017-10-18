@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/redux-observable-adapter-xstream.svg)](https://www.npmjs.com/package/redux-observable-adapter-xstream)
 [![Travis](https://img.shields.io/travis/vic/redux-observable-adapter-xstream.svg)](https://travis-ci.org/vic/redux-observable-adapter-xstream)
 
-Use [xstream](https://github.com/saltz/xstream) with [redux-observable](https://github.com/redux-observable/redux-observable)
+Use [xstream](https://github.com/staltz/xstream) with [redux-observable](https://github.com/redux-observable/redux-observable)
 
 
 ## Install
